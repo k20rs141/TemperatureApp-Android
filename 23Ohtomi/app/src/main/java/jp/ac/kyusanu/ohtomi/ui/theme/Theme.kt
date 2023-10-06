@@ -1,4 +1,4 @@
-package jp.ac.kyusan.ohtomi.ui.theme
+package jp.ac.kyusanu.ohtomi.ui.theme
 
 import android.app.Activity
 import android.os.Build

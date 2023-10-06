@@ -1,4 +1,4 @@
-package jp.ac.kyusan.ohtomi
+package jp.ac.kyusanu.ohtomi
 
 import org.junit.Test
 
