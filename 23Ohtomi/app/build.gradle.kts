@@ -1,15 +1,23 @@
 plugins {
     id("com.android.application")
     id("org.jetbrains.kotlin.android")
+//    // JSON
+//    id("kotlinx-serialization")
+//
+//    // DataBindingで使用
+//    id("kotlin-kapt")
 }
 
 android {
-    namespace = "jp.ac.kyusan.ohtomi"
     compileSdk = 34
 
+    namespace = "jp.ac.kyusan.ohtomi"
+
+    val buildToolsVersion = "34.0.0"
+
     defaultConfig {
-        applicationId = "jp.ac.kyusan.ohtomi"
-        minSdk = 34
+        applicationId = namespace
+        minSdk = 31
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -22,7 +30,7 @@ android {
 
     buildTypes {
         release {
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
@@ -38,6 +46,8 @@ android {
     }
     buildFeatures {
         compose = true
+        dataBinding = true
+        viewBinding = true
     }
     composeOptions {
         kotlinCompilerExtensionVersion = "1.9.10"
@@ -62,11 +72,18 @@ dependencies {
     implementation("androidx.core:core-ktx:1.12.0")
     implementation("androidx.constraintlayout:constraintlayout:2.1.4")
     implementation("androidx.recyclerview:recyclerview:1.3.1")
-    implementation("androidx.fragment:fragment:1.6.1")
+    implementation("androidx.fragment:fragment-ktx:1.6.1")
     implementation("androidx.cardview:cardview:1.0.0")
     implementation("com.google.android.material:material:1.9.0")
     implementation("androidx.appcompat:appcompat:1.6.1")
     implementation("androidx.legacy:legacy-support-v4:1.0.0")
+    implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+    // HTTP通信（どっちが良い？）私は，ok使ってますけど．
+    implementation("com.squareup.okhttp3:okhttp:5.0.0-alpha.9")
+    implementation("com.github.kittinunf.fuel:fuel:2.3.1")
+
+    // Charts（CO2で使ってる）
+    implementation("com.github.PhilJay:MPAndroidChart:v3.1.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
